@@ -1,6 +1,6 @@
 [project]
-name = "FIXME"
-description = "FIXME"
+name = "pyfunctype_mre"
+description = "pyfunctype_mre"
 version = "0.0.1"
 readme = "README.md"
 
@@ -18,18 +18,12 @@ classifiers = [
 license = "MIT"
 license-files = ["LICENSE"]
 
-dependencies = [
-    "pygame-ce",
-    "pgcooldown",
-    "ddframework @ git+https://github.com/dickerdackel/ddframework",
-]
+dependencies = [ ]
 
 [project.scripts]
-FIXME = "package.module:main"
 
 [project.urls]
-homepage = "https://github.com/dickerdackel/FIXME"
-bugtracker = "https://github.com/DickerDackel/FIXME/issues"
+homepage = "https://github.com/dickerdackel/pyfunctype_mre"
 
 [build-system]
 requires = ["setuptools"]
@@ -55,7 +49,7 @@ line-length = 100
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = false
-known-third-party = ["pygame", "numpy", "tinyecs", "patternegine", "pgcooldown", "rpeasings"]
+known-third-party = []
 lines-between-types = 1
 
 [tool.cibuildwheel]
