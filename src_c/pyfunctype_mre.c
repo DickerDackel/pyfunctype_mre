@@ -48,13 +48,13 @@ PyMODINIT_FUNC PyInit_pyfunctype_mre(void) {
     }
 
     /* Add another lookup dict to the module using the test function */
-    // PyObject *this_segfaults = Py_BuildValue("{s: O}", "sit", pyfunctype_mre_zefunction);
-    // if (this_segfaults != NULL) {
-    //     PyModule_AddObject(m, "this_segfaults", this_segfaults);
-    // }
-    // else {
-    //     Py_CLEAR(this_segfaults);
-    // }
+    PyObject *this_segfaults = Py_BuildValue("{s: O}", "sit", pyfunctype_mre_zefunction);
+    if (this_segfaults != NULL) {
+        PyModule_AddObject(m, "this_segfaults", this_segfaults);
+    }
+    else {
+        Py_CLEAR(this_segfaults);
+    }
 
     return m;
 }
