@@ -1,38 +1,17 @@
-# FIXME project name
+# How do I get a PyFunction object from a C-function?
 
-tl;dr description here
+I have created a module with a bunch of functions, and also want to provide a
+lookup table (dict) with specific tasks that point to the appropriate
+function.
 
-## Synopsis
+I can create that dict with `PyModule_AddObject`.  The dict parsing and
+constructing works too.  And when I let the dict entry point e.g. to a string
+object, everything is constructed properly.  But if replace that with the C
+function, that segfauls (not suprising).
 
-```console
-one-liner usage example
-```
+For most types, there's the `PySOMETYPE_FROM_C_TYPE`, but I can't find that
+for `PyFunction`.  So how can I get a `PyFunction` object from my C-function?
 
-## Usage
-
-Detailed usage and sample code for libraries, full help and options for tools.
-
-## Installation
-
-Installation instructions + requirements (should come automagically with
-pyproject.toml)
-
-```console
-sample install session
-```
-
-## Support / Contributing
-
-Issues can be opened on [Github](https://github.com/dickerdackel/FIXME/issues)
-
-## Credits / Acknowledgements
-
-* Thanks to [Make a README](https://www.makeareadme.com/)
-
-## License
-
-FIXME
-
-This software is provided under the MIT license.
-
-See LICENSE file for details.
+Here's an MRE.  Building and importing that segfauls.  Commenting out the
+`this_segfaults` part all at the bottom, it works as expected.  So what Do I
+have to wrap around `mre_zefunction` in `Py_BuildValue`?
