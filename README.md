@@ -1,3 +1,12 @@
+# Update
+
+Solution was given on pydis.
+
+`PyCFunction_New` with the record that was used to add the function to the
+module.
+
+Here's the initial question:
+
 # How do I get a PyFunction object from a C-function?
 
 I have created a module with a bunch of functions, and also want to provide a

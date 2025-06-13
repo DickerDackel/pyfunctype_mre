@@ -48,12 +48,37 @@ PyMODINIT_FUNC PyInit_pyfunctype_mre(void) {
     }
 
     /* Add another lookup dict to the module using the test function */
+    /*
     PyObject *this_segfaults = Py_BuildValue("{s: O}", "sit", pyfunctype_mre_zefunction);
     if (this_segfaults != NULL) {
         PyModule_AddObject(m, "this_segfaults", this_segfaults);
     }
     else {
         Py_CLEAR(this_segfaults);
+    }
+    */
+
+    /* This is how you get the function object.
+     * Also note, that directly adding things to the dict without keeping
+     * access to them will keep up from being able to DECREF them, thus the
+     * step by step construction of the dict.
+     * */
+    PyObject *solution = PyDict_New();
+    if (solution != NULL) {
+	PyModule_AddObject(m, "solution", solution);
+
+	/* This is the line */
+	PyObject *func = PyCFunction_New(&pyfunctype_mre_methods[0], NULL);
+	if (func != NULL) {
+	    PyDict_SetItemString(solution, "function thing", func);
+	    Py_DECREF(func);
+	}
+	else {
+	    Py_CLEAR(func);
+	}
+    }
+    else {
+	Py_CLEAR(solution);
     }
 
     return m;
